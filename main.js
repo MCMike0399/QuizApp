@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain, remote } = require('electron')
 
 function createWindow () {
   // Crea la ventana del navegador.

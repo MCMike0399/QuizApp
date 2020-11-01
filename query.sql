@@ -12,7 +12,9 @@ create table usuarios(
 	correo varchar(200) primary key,
     nombre varchar(200),
     apellido varchar(200),
-    pass varchar(200))
+    pass varchar(200),
+    flag bit,
+    calif int)
 insert into preguntas 
 	values(
     1,

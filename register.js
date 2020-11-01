@@ -9,31 +9,40 @@ regBtn.addEventListener('click',function() {
 
     if(email != confEmail || pass != confPass)  {
         $("#texto").empty();
+        $("#texto2").empty();
         $("#texto").append("Error al registrar! Revise que los parámetros coincidan");
         return;
     }
     else if(email=="" || confEmail=="" || pass=="" || confPass=="" || nombre=="" || apellido=="") {
         $("#texto").empty();
+        $("#texto2").empty();
         $("#texto").append("Algún dato no fue llenado");
         return;
-    }
-    else if(email == confEmail && pass ==confPass) {
-        $("#texto").empty();
-        $("#texto").append("Registro Correcto");
     }
     var mysql = require('mysql');
     var con = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "Quintero03"
+        password: "password", //cambiar
+        database: "preguntasexamen"
     });
     con.connect(function(err) {
         if(err) {
-            throw err
+            throw err;
         }
-        $("#texto2").empty();
-        $("#texto2").append("Conectado!");
-        var sql = "" 
+        var values = [[email,nombre,apellido,pass,0,0]];
+        var sql = "insert into usuarios values ?";
+        con.query(sql,[values],function(err,result) {
+            if(err) {
+                $("#texto1").empty();
+                $("#texto2").empty();
+                $("#texto2").append("usuario ya registrado");
+                throw err;
+            }
+            $("#texto1").empty();
+            $("#texto2").empty();
+            $("#texto2").append("registro correcto!");
+        }) 
     })
     
 })
