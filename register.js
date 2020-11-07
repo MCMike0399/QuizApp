@@ -23,14 +23,14 @@ regBtn.addEventListener('click',function() {
     var con = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "password", //cambiar
+        password: "Quintero03", //change
         database: "preguntasexamen"
     });
     con.connect(function(err) {
         if(err) {
             throw err;
         }
-        var values = [[email,nombre,apellido,pass,0,0]];
+        var values = [[email,nombre,apellido,pass,0]];
         var sql = "insert into usuarios values ?";
         con.query(sql,[values],function(err,result) {
             if(err) {
@@ -44,5 +44,5 @@ regBtn.addEventListener('click',function() {
             $("#texto2").append("registro correcto!");
         }) 
     })
-    
+        
 })

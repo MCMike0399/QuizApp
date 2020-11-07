@@ -13,8 +13,12 @@ create table usuarios(
     nombre varchar(200),
     apellido varchar(200),
     pass varchar(200),
-    flag bit,
-    calif int)
+    flag bit)
+create table examen(
+	correo varchar(200) not null,
+	cExamen int primary key,
+    calif int,
+    foreign key (correo) references usuarios(correo))
 insert into preguntas 
 	values(
     1,
