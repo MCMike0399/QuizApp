@@ -1,24 +1,26 @@
 use preguntasexamen;
 create table preguntas (
-	numPreg int primary key,
+	numPreg int not null,
     oracion varchar(2000),
     incisoA varchar(2000),
     incisoB varchar(2000),
     incisoC varchar(2000),
     incisoD varchar(2000),
     incisoE varchar(2000),
-    resp char)
+    primary key (numPreg),
+    resp char);
 create table usuarios(
 	correo varchar(200) primary key,
     nombre varchar(200),
     apellido varchar(200),
     pass varchar(200),
-    flag bit)
+    flag bit);
 create table examen(
 	correo varchar(200) not null,
-	cExamen int primary key,
+	cExamen int not null AUTO_INCREMENT,
     calif int,
-    foreign key (correo) references usuarios(correo))
+    foreign key (correo) references usuarios(correo),
+    primary key(cExamen));
 insert into preguntas 
 	values(
     1,
@@ -28,7 +30,7 @@ insert into preguntas
     'Interna Preocupante',
     'Fuera de Perfil',
     'Paraíso Fiscal',
-    'A')
+    'A');
 insert into preguntas 
 	values(
     2,
@@ -38,7 +40,7 @@ insert into preguntas
     'Cinco veces al año',
     'Cada 6 meses',
     'Ninguna de las anteriores',
-    'B')
+    'B');
 insert into preguntas 
 	values(
     3,
@@ -48,7 +50,7 @@ insert into preguntas
     'Asimilado',
     'Empleado Público',
     'Persona Puesta en la Política',
-    'A')
+    'A');
 insert into preguntas 
 	values(
     4,
@@ -58,7 +60,7 @@ insert into preguntas
     'Bajo Medio y Alto',
     'Bajo y Alto',
     'Ninguna de las Anteriores',
-    'D')
+    'D');
 insert into preguntas 
 	values(
     5,
@@ -68,7 +70,7 @@ insert into preguntas
     'Interna Preocuapante',
     'Amonedados',
     'Cheques de Viajero',
-    'D')
+    'D');
 insert into preguntas 
 	values(
     6,
@@ -78,4 +80,4 @@ insert into preguntas
     'Conservar la información de reportes por varios años, sólo si lo pide la CNBV proporcionarlos',
     'No proporcionar información de lo que pasa en la Casa de Bolsa',
     'No proporcionar información sensible de los clientes',
-    'A')
+    'A');
